@@ -10,7 +10,18 @@ public class Vertice {
 	private LinkedList<Vertice> adjacents;
 	private LinkedList<Integer> lengthToAdjacents;
 	private Vertice minPrevious;
+	private int nodeId;
 	
+	public Vertice(String name,int nodeId){
+		this.name = name;
+		this.visited = false;
+		this.distance = INFINITY;
+		this.adjacents = new LinkedList<Vertice>();
+		this.lengthToAdjacents = new LinkedList<Integer>();
+		this.minPrevious = null;
+		this.nodeId = nodeId;
+		
+	}
 	public Vertice(String name){
 		this.name = name;
 		this.visited = false;
@@ -18,6 +29,13 @@ public class Vertice {
 		this.adjacents = new LinkedList<Vertice>();
 		this.lengthToAdjacents = new LinkedList<Integer>();
 		this.minPrevious = null;
+		
+	}
+	public int getNodeId() {
+		return nodeId;
+	}
+	public void setNodeId(int nodeId) {
+		this.nodeId = nodeId;
 	}
 	public LinkedList<Integer> getLengthToAdjacents() {
 		return lengthToAdjacents;

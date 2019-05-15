@@ -9,7 +9,7 @@ public class main {
 		// TODO Auto-generated method stub
 		
 		Graph g = readFile(); //Creating graph from file data
-		g.print2();
+	//	g.print2();
 		g.shortestPath(g.getVertices().get(0), g.getVertices().get(1));
 		g.print2();
 		//g.print();
@@ -34,19 +34,26 @@ public class main {
 		LinkedList<Edge> edges = new LinkedList<Edge>();
 
 		Boolean gettingEdges = false;
+		int idCounter = 0;
 		while(inFile.hasNextLine()){
 
 			String str = inFile.nextLine();
 
 			if (gettingEdges == false && !str.equals("")){
-				Vertice temp = new Vertice(str);
+				Vertice temp = new Vertice(str,idCounter);
 				vertices.add(temp);
+				idCounter++;
 			}
 			else if (gettingEdges == true && !str.equals("")){
 				String[] ary = str.split(" ");
 				Vertice tempStartV = new Vertice(ary[0]);
 				Vertice tempEndV = new Vertice(ary[1]);
-				Edge tempEdge = new Edge(tempStartV, tempEndV, Integer.parseInt(ary[2]));
+				int endId = 0;
+				for(int i = 0; i<vertices.size(); i++) {
+					if(tempEndV.getName().equals(vertices.get(i).getName()))
+						   endId = i;
+				}
+				Edge tempEdge = new Edge(tempStartV, tempEndV, Integer.parseInt(ary[2]), endId);
 				edges.add(tempEdge);
 			}
 			else if (str.equals("")){

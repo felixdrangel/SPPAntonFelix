@@ -57,14 +57,20 @@ public class Graph {
 			
 			if(queue.get(0).getVisited()==false) { //om noden inte redan är färdig
 			for(int i = 0; i<queue.get(0).getAdjacents().size(); i++) {//gå igenom alla nodes grannar
-				System.out.println("goes through " + queue.get(0).getName());
-				queue.add(vertices.get(arg0)); //lägger till nodens grannar till kön
+	
+				queue.add(vertices.get(queue.get(0).getAdjacents().get(i).getNodeId())); //lägger till nodens grannar till kön
+			//	System.out.println("ok " + queue.get(0).getName() + " ska vara v1 nu: " + queue.get(1).getName());
 				int newDistance = queue.get(0).getDistance() + queue.get(0).getLengthToAdjacents().get(i); //beräknar grannens potentiellt nya distans
+				
 				for(int j = 0; j<vertices.size(); j++) { //kollar vilken noden är i listan så den poteniellt kan uppdateras
-					if(queue.get(0).getAdjacents().get(i).getName().equals(vertices.get(j).getName())) { //när noden har hittat sig själv
-						if(newDistance < vertices.get(j).getDistance())//om nodens nya distans är mindre än dens gamla
+
+					if(queue.get(0).getAdjacents().get(i).getNodeId() == vertices.get(j).getNodeId()) { //när noden har hittat sig själv
+						System.out.println("ok1");
+						if(newDistance < vertices.get(j).getDistance()) {//om nodens nya distans är mindre än dens gamla
+							System.out.println("ok2");
 						vertices.get(j).setDistance(newDistance); //uppdatera distans
-						queue.getLast().setAdjacents(vertices.get(j).getAdjacents());
+						
+						}
 					}
 				}
 				//vertices.get(c).getAdjacents().get(i).setDistance(queue.get(0).getDistance() + queue.get(0).getLengthToAdjacents().get(i));
@@ -97,11 +103,11 @@ public class Graph {
 	}
 
 	public void setAdjacents() {
-
+			// metoden lägger till nodgrannar till varje nod som hittas igenom att loopa igenom kanterna 
 		for (int i = 0; i < vertices.size(); i++) {
 			for (int j = 0; j < edges.size(); j++) {
-				if (edges.get(j).getStart().getName().equals(vertices.get(i).getName())) {
-					vertices.get(i).addAdjacent(edges.get(j).getEnd());
+				if (edges.get(j).getStart().getName().equals(vertices.get(i).getName())) { 
+					vertices.get(i).addAdjacent(vertices.get(edges.get(j).getEndId())); // lägger till gran-noden
 					vertices.get(i).addAdjacentLength(edges.get(j).getLength());
 				}
 			}

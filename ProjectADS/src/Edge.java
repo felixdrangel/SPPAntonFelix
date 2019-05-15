@@ -4,11 +4,19 @@ public class Edge {
 	private Vertice start;
 	private Vertice end;
 	private int length;
+	private int endId;
 	
-	public Edge(Vertice start, Vertice end, int length){
+	public Edge(Vertice start, Vertice end, int length,int endId){
 		this.start = start;
 		this.end = end;
 		this.length = length;
+		this.endId = endId;
+	}
+	public int getEndId() {
+		return endId;
+	}
+	public void setEndId(int endId) {
+		this.endId = endId;
 	}
 	public Edge(){
 		

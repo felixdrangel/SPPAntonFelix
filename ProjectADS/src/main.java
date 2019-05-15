@@ -9,9 +9,12 @@ public class main {
 		// TODO Auto-generated method stub
 		
 		Graph g = readFile(); //Creating graph from file data
-		
+		g.print2();
 		g.shortestPath(g.getVertices().get(0), g.getVertices().get(1));
-		g.print();
+		g.print2();
+		//g.print();
+
+		
 		
 
 

@@ -8,6 +8,7 @@ public class Vertice {
 	private Boolean visited;
 	private int distance;
 	private LinkedList<Vertice> adjacents;
+	private LinkedList<Integer> lengthToAdjacents;
 	private Vertice minPrevious;
 	
 	public Vertice(String name){
@@ -15,7 +16,17 @@ public class Vertice {
 		this.visited = false;
 		this.distance = INFINITY;
 		this.adjacents = new LinkedList<Vertice>();
+		this.lengthToAdjacents = new LinkedList<Integer>();
 		this.minPrevious = null;
+	}
+	public LinkedList<Integer> getLengthToAdjacents() {
+		return lengthToAdjacents;
+	}
+	public void setLengthToAdjacents(LinkedList<Integer> lengthToAdjacents) {
+		this.lengthToAdjacents = lengthToAdjacents;
+	}
+	public Vertice() {
+		
 	}
 
 	public Vertice getMinPrevious() {
@@ -63,6 +74,10 @@ public class Vertice {
 		adjacents.add(adjacent);
 		
 	}
+	public void addAdjacentLength(int length) {
+		this.lengthToAdjacents.add(length);
+	}
+	
 	public void printAdjacents() {
 		
 		for(int i = 0; i<adjacents.size(); i++) {

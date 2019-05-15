@@ -11,7 +11,7 @@ public class main {
 		Graph g = readFile(); //Creating graph from file data
 		
 		g.shortestPath(g.getVertices().get(0), g.getVertices().get(1));
-		
+		g.print();
 		
 
 
@@ -66,5 +66,4 @@ public class main {
 		//Returning new graph
 		return new Graph(graphType, vertices, edges);
 	}
-
 }

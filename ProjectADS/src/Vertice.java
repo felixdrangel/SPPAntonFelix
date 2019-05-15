@@ -14,7 +14,7 @@ public class Vertice {
 		this.name = name;
 		this.visited = false;
 		this.distance = INFINITY;
-		this.adjacents = null;
+		this.adjacents = new LinkedList<Vertice>();
 		this.minPrevious = null;
 	}
 
@@ -59,11 +59,16 @@ public class Vertice {
 	}
 
 	public void addAdjacent(Vertice adjacent) {
-		this.adjacents.add(adjacent);
+		
+		adjacents.add(adjacent);
+		
 	}
-
-	
-	
-	
+	public void printAdjacents() {
+		
+		for(int i = 0; i<adjacents.size(); i++) {
+			System.out.println(adjacents.get(i).getName());
+		}
+		
+	}	
 	
 }

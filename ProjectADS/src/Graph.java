@@ -15,6 +15,7 @@ public class Graph {
 		this.type = type;
 		this.vertices = vertices;
 		this.edges = edges;
+		setAdjacents();
 	}
 
 	public String getType() {
@@ -52,15 +53,13 @@ public class Graph {
 		queue.add(startVertice);
 
 		while (!queue.isEmpty()){
-			int lowIndex = 0;
+			
 			LinkedList <Edge> edgesOfCurrentVertex = new LinkedList<Edge>();
-
 			int c = 0; //edgesOfCurrentVertexCounter
 			for (int i=0; i<edges.size(); i++){
 				if (edges.get(i).getStart().getName().equals(queue.get(0).getName())){
 					edgesOfCurrentVertex.add(edges.get(i));
-					if(edgesOfCurrentVertex.get(c).getLength()<(edgesOfCurrentVertex.get(lowIndex).getLength()))
-						lowIndex = i;
+				
 					queue.add(edgesOfCurrentVertex.get(c).getEnd());
 					c++; //edgesOfCurrentVertexCounter
 				}
@@ -69,8 +68,16 @@ public class Graph {
 			
 			
 			queue.get(0).setVisited(true);
-			System.out.println(queue.get(0).getName());
+			//System.out.println(queue.get(0).getName());
+			System.out.println("adjacents for " + queue.get(0).getName() + " ");
+			queue.get(0).printAdjacents();
+			//if(queue.get(0).getAdjacents().isEmpty())
+			//	System.out.println("halloj");
+			
 			queue.pop();
+			
+			
+			
 
 		}
 	}
@@ -94,6 +101,29 @@ public class Graph {
 				}
 				return list; 
 
+	}
+	public void setAdjacents() {
+		
+		for(int i = 0; i<vertices.size(); i++) {
+			for(int j = 0; j<edges.size(); j++) {
+				if(edges.get(j).getStart().getName().equals(vertices.get(i).getName()))
+					vertices.get(i).addAdjacent(edges.get(j).getEnd());
+			}
+		}
+		
+		
+	}
+	public void print() {
+		
+		for(int i = 0; i<vertices.size(); i++) {
+			System.out.println("Vertices " + vertices.get(i).getName());
+			for(int j = 0; j<vertices.get(i).getAdjacents().size(); j++) {
+				System.out.println(vertices.get(i).getAdjacents().get(j).getName());
+				
+			}
+			System.out.println("---------------------------");
+		}
+		
 	}
 
 

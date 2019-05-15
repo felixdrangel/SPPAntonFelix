@@ -19,7 +19,7 @@ public class main {
 
 	//Reading the file and stores the information
 	public static Graph readFile() throws FileNotFoundException{
-		File inputFile = new File("/Users/felixdrangel/Desktop/inputFile.txt"); //The file
+		File inputFile = new File("inputFile.txt"); //The file
 		Scanner inFile = new Scanner(inputFile);
 
 		//First line (The grapgh type)

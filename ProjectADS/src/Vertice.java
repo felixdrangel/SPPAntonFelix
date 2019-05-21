@@ -18,7 +18,7 @@ public class Vertice {
 		this.distance = INFINITY;
 		this.adjacents = new LinkedList<Vertice>();
 		this.lengthToAdjacents = new LinkedList<Integer>();
-		this.minPrevious = null;
+		this.minPrevious = new Vertice();
 		this.nodeId = nodeId;
 		
 	}
@@ -28,7 +28,7 @@ public class Vertice {
 		this.distance = INFINITY;
 		this.adjacents = new LinkedList<Vertice>();
 		this.lengthToAdjacents = new LinkedList<Integer>();
-		this.minPrevious = null;
+		this.minPrevious = new Vertice();
 		
 	}
 	public int getNodeId() {
@@ -95,13 +95,5 @@ public class Vertice {
 	public void addAdjacentLength(int length) {
 		this.lengthToAdjacents.add(length);
 	}
-	
-	public void printAdjacents() {
-		
-		for(int i = 0; i<adjacents.size(); i++) {
-			System.out.println(adjacents.get(i).getName());
-		}
-		
-	}	
 	
 }

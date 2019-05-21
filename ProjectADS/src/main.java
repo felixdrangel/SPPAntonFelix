@@ -9,7 +9,7 @@ public class main {
 		// TODO Auto-generated method stub
 
 		Graph g = readFile(); //Creating graph from file data
-		g.shortestPath(g.getVertices().get(1), g.getVertices().get(6)); //Entering id of the nodes in list vertices
+		g.shortestPath(g.getVertices().get(1), g.getVertices().get(3)); //Entering id of the nodes in list vertices
 
 	}
 
@@ -26,8 +26,8 @@ public class main {
 		//File inputFile = new File("/Users/felixdrangel/Desktop/Testfiler/Tester implementationsval 1/Nodes9.txt"); //Nodes9.txt (ska funka)
 		//File inputFile = new File("/Users/felixdrangel/Desktop/Testfiler/Tester implementationsval 1/Nodes10.txt"); //Nodes10.txt (ska funka)
 		//File inputFile = new File("/Users/felixdrangel/Desktop/Testfiler/Tester implementationsval 1/Nodes11.txt"); //Nodes11.txt (ska funka)
-		File inputFile = new File("/Users/felixdrangel/Desktop/Testfiler/Tester implementationsval 1/Nodes12.txt"); //Nodes12.txt (ska funka)
-
+		//File inputFile = new File("/Users/felixdrangel/Desktop/Testfiler/Tester implementationsval 1/Nodes12.txt"); //Nodes12.txt (ska funka)
+		File inputFile = new File("C:\\Users\\anton\\Desktop\\apples.txt");
 		Scanner inFile = new Scanner(inputFile);
 
 		//First line (The graph type)
